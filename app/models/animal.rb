@@ -7,4 +7,5 @@ class Animal < ApplicationRecord
   validates :age, presence: true, numericality: { less_than_or_equal_to: 30,  only_integer: true }
   validates :general_info, length: { maximum: 1000 }
   validates :come_date, presence: true
+  validates :breed, presence: true
 end
