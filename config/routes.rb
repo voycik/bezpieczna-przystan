@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'animals/index'
+  get 'animals/show'
+  get 'animals/new'
+  get 'animals/create'
+  get 'animals/destroy'
   root 'articles#index'
   get 'articles/index'
   get 'articles/new'
