@@ -1,2 +1,10 @@
 %h1 Animals#index
-%p Find me in app/views/animals/index.html.erb
+%p
+.card-deck
+  - @animals.each do |animal|
+    .col-3
+      .card
+        = link_to animal_path(animal) do
+          %img.card-img-top{:alt => "#{animal.name}", :src => "https://www.sunnyskyz.com/uploads/2017/11/b56qu-dog-figures-out-how-to-get-owners-to-stay-home-and-play-with-him-3.jpg"}/
+          .card-body
+            %h5.card-title="#{animal.name}"
