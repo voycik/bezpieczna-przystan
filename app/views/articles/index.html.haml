@@ -1,12 +1,11 @@
 %h1 Articles#index
 %table
   %tr
-    %th Title
-    %th Body
-    %th{:colspan => "2"}
+  = will_paginate
   - @articles.each do |article|
     %tr
       %td= article.title
       %td= article.body
       %td= link_to 'Show', article_path(article)
       %td= link_to 'Edit', edit_article_path(article)
+  = will_paginate
