@@ -50,7 +50,7 @@ Cat.create!(name: 'Example Cat',
                  come_date: come_date,
                  vaccination_date: vaccination_date,
                  sterilization_date: sterilization_date,
-                 breed:breed)
+                 breed: breed)
 end
 
 Article.create!(title: 'Perfect title for perfect page',
@@ -58,7 +58,7 @@ Article.create!(title: 'Perfect title for perfect page',
                       sed do eiusmod tempor incididunt ut labore et dolore...')
 
 30.times do
-    title = Faker::Lorem.sentence
-    body = Faker::Lorem.paragraphs(3)
-    Article.create!(title: title, body: body)
+  title = Faker::Lorem.sentence
+  body = Faker::Lorem.paragraphs(3)
+  Article.create!(title: title, body: body)
 end

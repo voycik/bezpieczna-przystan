@@ -38,19 +38,19 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
+gem 'carrierwave', '~> 1.0'
 gem 'faker'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'rubocop', require: false
 gem 'sentry-raven'
-gem 'haml-rails'
-gem 'carrierwave', '~> 1.0'
 gem 'will_paginate', '~> 3.1.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -63,8 +63,8 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'rails-controller-testing' # If you are using Rails 5.x
+  gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'simplecov', require: false
 end
 
