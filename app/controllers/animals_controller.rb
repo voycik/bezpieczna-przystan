@@ -8,14 +8,22 @@ class AnimalsController < ApplicationController
   end
 
   def new
+  @animal = Animal.new
+  end
+
+  def create
+    @animal = Animal.new(animal_params)
+    if @animal.save
+      flash[:success] = "Pomyślnie dodano nowego zwierzaka."
+      redirect_to animals_path
+    else
+      flash.now[:danger] = "Nie udało się dodać zwierzaka. Sprawdź błędy i spróbuj ponownie."
+      render :new
+    end
   end
 
   def edit
   end
-
-  def create
-  end
-
   def update
   end
 
