@@ -1,11 +1,12 @@
 %h1 Articles#index
+= will_paginate
 %table
   %tr
-  = will_paginate
+
   - @articles.each do |article|
     %tr
       %td= article.title
       %td= article.body
       %td= link_to 'Show', article_path(article)
       %td= link_to 'Edit', edit_article_path(article)
-  = will_paginate
+= will_paginate
