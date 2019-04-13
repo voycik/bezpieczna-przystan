@@ -1,2 +1,20 @@
 %h1 Animals#show
-%p Find me in app/views/animals/show.html.erb
+.row
+  .col-12
+    %h1 #{@animal.name}
+  .col-4
+    %img.img-thumbnail{:alt => "Avatar", :src => "https://www.sunnyskyz.com/uploads/2017/11/b56qu-dog-figures-out-how-to-get-owners-to-stay-home-and-play-with-him-3.jpg"}
+  .col-8
+    %p Rasa: #{@animal.breed}
+    %p Płeć: #{@animal.gender}
+    %p Wielkość: #{@animal.size}
+    %p Przeznaczenie: #{@animal.purpose}
+    %p Wiek: #{@animal.age}
+    %p Płeć: #{@animal.gender}
+    %p Przyjazny dzieciom: #{@animal.for_kids}
+    %p W Bezpiecznej Przystani od: #{@animal.come_date}
+    %p Data sterylizacji: #{@animal.sterilization_date}
+    %p Data ostatniego szczepienia: #{@animal.vaccination_date}
+    %p Szczegóły: #{@animal.general_info}
+    %p
+    %button.btn.btn-success{:type => "button"} PSYgarnij mnie :)
