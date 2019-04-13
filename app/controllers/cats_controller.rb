@@ -1,10 +1,10 @@
-class CatsController < ApplicationController
+class CatsController < AnimalsController
   def index
-    @dogs = Cat.all
+    @cats = Cat.all
   end
 
   def new
-  @animal = Cat.new
+    @animal = Cat.new
   end
 
   def create
