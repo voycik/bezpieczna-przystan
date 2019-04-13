@@ -12,7 +12,7 @@ class AnimalsController < ApplicationController
   end
 
   def create
-    @animal = Animal.new(animal_params)
+    @animal = Animal.new(animal_params(animal))
     if @animal.save
       flash[:success] = "Pomyślnie dodano nowego zwierzaka."
       redirect_to animals_path
@@ -32,8 +32,8 @@ class AnimalsController < ApplicationController
 
   private
 
-  def animal_params
-    params.require(:animal).permit(:name, :type, :gender, :size, :age,
+  def animal_params(type)
+    params.require(type).permit(:name, :type, :gender, :size, :age,
       :purpose, :for_kids, :photo, :general_info, :come_date, :vaccination_date,
       :breed)
   end
