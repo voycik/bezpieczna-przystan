@@ -4,7 +4,7 @@ class CatsController < AnimalsController
   end
 
   def new
-  @animal = Cat.new
+    @animal = Cat.new
   end
 
   def create
