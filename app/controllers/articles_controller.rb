@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :find_article, only: [:show, :edit, :update, :destroy]
+  before_action :find_article, only: %i[show edit update destroy]
   def index
     @articles = Article.paginate(page: params[:page], per_page: 7)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @article = Article.new
@@ -23,8 +22,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @article.update_attributes(article_params)
