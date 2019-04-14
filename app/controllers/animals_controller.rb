@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AnimalsController < ApplicationController
   before_action :find_animal, only: %i[show edit destroy]
   def index
@@ -16,13 +18,11 @@ class AnimalsController < ApplicationController
 
   def animal_params(type)
     params.require(type).permit(:name, :type, :gender, :size, :age,
-      :purpose, :for_kids, :photo, :general_info, :come_date, :vaccination_date,
-      :breed)
+                                :purpose, :for_kids, :photo, :general_info, :come_date, :vaccination_date,
+                                :breed)
   end
 
   def find_animal
     @animal = Animal.find(params[:id])
   end
-
-
 end

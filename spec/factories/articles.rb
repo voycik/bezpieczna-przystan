@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :article do
-    title {'About'}
-    body {'Lorem ipsum'}
-    photo {'Art.jpg'}
+    title { Faker::Lorem.sentence }
+    body { Faker::Lorem.paragraphs(3) }
+    photo { 'Art.jpg' }
   end
 end
