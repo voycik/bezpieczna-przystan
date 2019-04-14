@@ -5,6 +5,21 @@ class AnimalsController < ApplicationController
   def index
     @animals = Animal.all
   end
+  
+  def new
+    @animal = Animal.new
+  end
+
+  def create
+    @animal = Animal.new(animal_params)
+    if @animal.save
+      flash[:success] = 'Pomyślnie dodano nowego zwierzaczka.'
+      redirect_to animals_path
+    else
+      flash.now[:danger] = 'Nie udało się dodać nowego zwierzątka. Sprawdź błędy i spróbuj ponownie.'
+      render :new
+    end
+  end
 
   def show; end
 
@@ -16,10 +31,10 @@ class AnimalsController < ApplicationController
 
   private
 
-  def animal_params(type)
-    params.require(type).permit(:name, :type, :gender, :size, :age,
+  def animal_params
+    params.require(:animal).permit(:name, :type, :gender, :size, :age,
                                 :purpose, :for_kids, :photo, :general_info, :come_date, :vaccination_date,
-                                :breed)
+                                :sterilization_date, :breed)
   end
 
   def find_animal
