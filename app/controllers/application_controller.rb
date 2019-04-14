@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::Base
   before_action :set_raven_context
+  include Pundit
+  protect_from_forgery
 
   private
 
