@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, skip: :all
+  devise_scope :admin do
+    get 'admin', to: 'devise/sessions#new'
+  end
   resources :animals, :articles
   root 'articles#index'
 
