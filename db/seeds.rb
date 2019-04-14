@@ -6,7 +6,7 @@ Dog.create!(name: 'Example Dog',
             age: 5,
             purpose: 'yard',
             for_kids: true,
-            photo: 'Dog.img',
+            photo: 'Dog.jpg',
             general_info: 'Cute dog',
             come_date: Date.new(2015, 12, 8),
             vaccination_date: Date.new(2013, 9, 5),
@@ -18,7 +18,7 @@ Cat.create!(name: 'Example Cat',
             age: 2,
             purpose: 'house',
             for_kids: true,
-            photo: 'Cat.img',
+            photo: 'Cat.jpg',
             general_info: 'Cute cat',
             come_date: Date.new(2017, 12, 8),
             vaccination_date: Date.new(2017, 9, 5),
@@ -32,7 +32,7 @@ Cat.create!(name: 'Example Cat',
   age  = rand(1..20)
   purpose = %w[house yard].sample
   for_kids = Faker::Boolean.boolean
-  photo = "#{type}.img"
+  photo = "#{type}.png"
   general_info = Faker::Lorem.sentence
   come_date = Faker::Date.backward(14)
   vaccination_date = Faker::Date.backward(140)
@@ -49,5 +49,16 @@ Cat.create!(name: 'Example Cat',
                  general_info: general_info,
                  come_date: come_date,
                  vaccination_date: vaccination_date,
-                 sterilization_date: sterilization_date)
+                 sterilization_date: sterilization_date,
+                 breed: breed)
+end
+
+Article.create!(title: 'Perfect title for perfect page',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore...')
+
+30.times do
+  title = Faker::Lorem.sentence
+  body = Faker::Lorem.paragraphs(3)
+  Article.create!(title: title, body: body)
 end

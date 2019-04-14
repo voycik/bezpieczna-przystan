@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AnimalsController < ApplicationController
   before_action :find_animal, only: %i[show edit destroy]
   def index
