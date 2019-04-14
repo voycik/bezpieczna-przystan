@@ -1,5 +1,6 @@
 .col-4
   = simple_form_for(@animal) do |form|
+    = form.input :type
     = form.input :name
     = form.input :photo
     = form.input :breed
