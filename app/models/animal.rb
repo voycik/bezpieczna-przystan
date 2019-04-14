@@ -10,5 +10,5 @@ class Animal < ApplicationRecord
   validates :general_info, length: { maximum: 1000 }
   validates :come_date, presence: true
   validates :breed, presence: true
-  validates :photo, presence: true, format: { with: /.(gif|jpg|png)\Z/i, message: 'Nieobsługiwany format. Wybierz plik .gif, .jpg, lub .png' }
+  has_many :images, as: :imageable
 end
