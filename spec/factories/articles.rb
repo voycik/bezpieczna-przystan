@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :article do
-    title { 'About' }
-    body { 'Lorem ipsum' }
+    title { Faker::Lorem.sentence }
+    body { Faker::Lorem.paragraphs(3) }
     photo { 'Art.jpg' }
   end
 end
