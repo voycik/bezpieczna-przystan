@@ -5,13 +5,15 @@ class AnimalsController < ApplicationController
   def index
     @animals = Animal.all
   end
-  
+
   def new
     @animal = Animal.new
+    authorize @animal
   end
 
   def create
     @animal = Animal.new(animal_params)
+    authorize @animal
     if @animal.save
       flash[:success] = 'Pomyślnie dodano nowego zwierzaczka.'
       redirect_to animals_path
@@ -23,11 +25,17 @@ class AnimalsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    authorize @animal
+  end
 
-  def update; end
+  def update
+    authorize @animal
+  end
 
-  def destroy; end
+  def destroy
+    authorize @animal
+  end
 
   private
 

@@ -10,10 +10,12 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    authorize @article
   end
 
   def create
     @article = Article.new(article_params)
+    authorize @article
     if @article.save
       flash[:success] = 'Post opublikowany'
       redirect_to articles_path
@@ -22,9 +24,12 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @article
+  end
 
   def update
+    authorize @article
     if @article.update_attributes(article_params)
       flash[:success] = 'Post zaktualizowany'
       redirect_to @article
@@ -34,6 +39,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    authorize @article
     @article.destroy
     flash[:success] = 'Post usunięty'
     redirect_to articles_path
@@ -48,4 +54,6 @@ class ArticlesController < ApplicationController
   def find_article
     @article = Article.find(params[:id])
   end
+
+
 end
