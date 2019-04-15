@@ -6,7 +6,7 @@ RSpec.describe ArticlesController, type: :controller do
   it 'has a valid factory' do
     expect(FactoryBot.create(:article)).to be_valid
   end
-
+  let(:user) { FactoryBot.create(:user) }
   let(:article) { FactoryBot.create(:article) }
   subject { article }
 
@@ -47,18 +47,36 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe 'GET #new' do
-    it 'returns http success' do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
+    context 'with signed in user' do
+      before :each do
+        sign_in user
+      end
+      it 'returns http success' do
+        get :new
+        expect(response).to have_http_status(:success)
+      end
 
-    it 'renders the :new view' do
-      get :new
-      expect(response).to render_template(:new)
+      it 'renders the :new view' do
+        get :new
+        expect(response).to render_template(:new)
+      end
+    end
+    context 'with non-signed in user' do
+      it 'prevents render the :new view' do
+        get :new
+        expect(flash[:alert]).to eq 'You are not authorized to perform this action.'
+      end
+      it 'returns http found' do
+        get :new
+        expect(response).to have_http_status(:found)
+      end
     end
   end
 
   describe 'POST #create' do
+    before :each do
+      sign_in user
+    end
     context 'with valid attributes' do
       it 'create new article' do
         expect do
@@ -103,25 +121,46 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe 'GET #edit' do
-    before :each do
-      get :edit, params: { id: article.id }
-    end
+    context 'with signed in user' do
+      before :each do
+        sign_in user
+        get :edit, params: { id: article.id }
+      end
 
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
-    end
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
 
-    it 'assigns the requested article to @article' do
-      expect(assigns(:article)).to eq(article)
-    end
+      it 'assigns the requested article to @article' do
+        expect(assigns(:article)).to eq(article)
+      end
 
-    it 'renders the :edit view' do
-      expect(response).to render_template(:edit)
+      it 'renders the :edit view' do
+        expect(response).to render_template(:edit)
+      end
+    end
+    context 'with non-signed in user' do
+      before :each do
+        get :edit, params: { id: article.id }
+      end
+
+      it 'returns http found' do
+        expect(response).to have_http_status(:found)
+      end
+
+      it 'assigns the requested article to @article' do
+        expect(assigns(:article)).to eq(article)
+      end
+
+      it 'prevents render the :edit view' do
+        expect(flash[:alert]).to eq 'You are not authorized to perform this action.'
+      end
     end
   end
 
   describe 'PUT #update' do
     before :each do
+      sign_in user
       @article = FactoryBot.create(:article)
     end
 
@@ -181,19 +220,39 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    before :each do
-      @article = FactoryBot.create(:article)
-    end
+    context 'with signed in user' do
+      before :each do
+        sign_in user
+        @article = FactoryBot.create(:article)
+      end
 
-    it 'deletes the article' do
-      expect do
+      it 'prevents deleting the article' do
+        expect do
+          delete :destroy, params: { id: @article.id }
+        end.to change { Article.count }.by(-1)
+      end
+
+      it 'redirects to articles#index' do
         delete :destroy, params: { id: @article.id }
-      end.to change { Article.count }.by(-1)
+        expect(response).to redirect_to articles_path
+      end
     end
 
-    it 'redirects to articles#index' do
-      delete :destroy, params: { id: @article.id }
-      expect(response).to redirect_to articles_path
+    context 'with non-signed in user' do
+      before :each do
+        @article = FactoryBot.create(:article)
+      end
+
+      it 'deletes the article' do
+        expect do
+          delete :destroy, params: { id: @article.id }
+        end.to change { Article.count }.by(0)
+      end
+
+      it 'renders flash' do
+        delete :destroy, params: { id: @article.id }
+        expect(flash[:alert]).to eq 'You are not authorized to perform this action.'
+      end
     end
   end
 end
