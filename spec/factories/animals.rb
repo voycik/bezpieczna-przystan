@@ -9,7 +9,7 @@ FactoryBot.define do
     age { 5 }
     purpose { 'yard' }
     for_kids { true }
-    photo { 'Dog.jpg' }
+    # photo { 'Dog.jpg' }
     general_info { 'Cute dog' }
     come_date { Date.new(2015, 12, 8) }
     vaccination_date { Date.new(2013, 9, 5) }
@@ -24,7 +24,7 @@ FactoryBot.define do
     age { 3 }
     purpose { 'house' }
     for_kids { false }
-    photo { 'Cat.jpg' }
+    # photo { 'Cat.jpg' }
     general_info { 'Cute cat' }
     come_date { Date.new(2017, 12, 8) }
     vaccination_date { Date.new(2017, 9, 5) }

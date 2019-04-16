@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
     if @article.save
       params[:article][:image_data].each do |file|
         @article.images.create!(image: file)
-      end
+      end if params[:article][:image_data]
       flash[:success] = 'Post opublikowany'
       redirect_to articles_path
     else

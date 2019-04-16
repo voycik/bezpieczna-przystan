@@ -84,7 +84,7 @@ RSpec.describe AnimalsController, type: :controller do
           post :create, params: { animal: {
             type: 'Dog',
             name: 'Mr. Dog',
-            photo: 'picture.png',
+            # photo: 'picture.png',
             gender: 'male',
             size: 'small',
             breed: 'pug',
@@ -103,7 +103,7 @@ RSpec.describe AnimalsController, type: :controller do
         post :create, params: { animal: {
           type: 'Dog',
           name: 'Mr. Dog',
-          photo: 'picture.png',
+          # photo: 'picture.png',
           gender: 'male',
           size: 'small',
           breed: 'pug',
@@ -125,7 +125,7 @@ RSpec.describe AnimalsController, type: :controller do
           post :create, params: { animal: {
             type: nil,
             name: nil,
-            photo: nil,
+            # photo: nil,
             gender: nil,
             size: nil,
             purpose: nil,
@@ -143,7 +143,7 @@ RSpec.describe AnimalsController, type: :controller do
         post :create, params: { animal: {
           type: nil,
           name: nil,
-          photo: nil,
+          # photo: nil,
           gender: nil,
           size: nil,
           purpose: nil,
@@ -208,7 +208,7 @@ RSpec.describe AnimalsController, type: :controller do
         put :update, params: { id: @animal.id, animal: {
           type: 'Dog',
           name: 'Mr. Cat',
-          photo: 'cat_picture.png',
+          # photo: 'cat_picture.png',
           gender: 'female',
           size: 'big',
           breed: 'unknown',
@@ -227,7 +227,7 @@ RSpec.describe AnimalsController, type: :controller do
         put :update, params: { id: @animal.id, animal: {
           type: 'Dog',
           name: 'Mr. Cat',
-          photo: 'cat_picture.png',
+          # photo: 'cat_picture.png',
           gender: 'female',
           size: 'big',
           breed: 'unknown',
@@ -242,7 +242,7 @@ RSpec.describe AnimalsController, type: :controller do
         @animal.reload
         expect(@animal.type).to eq('Dog')
         expect(@animal.name).to eq('Mr. Cat')
-        expect(@animal.photo).to eq('cat_picture.png')
+        # expect(@animal.photo).to eq('cat_picture.png')
         expect(@animal.gender).to eq('female')
         expect(@animal.size).to eq('big')
         expect(@animal.breed).to eq('unknown')
@@ -259,7 +259,7 @@ RSpec.describe AnimalsController, type: :controller do
         put :update, params: { id: @animal.id, animal: {
           type: 'Dog',
           name: 'Mr. Cat',
-          photo: 'cat_picture.png',
+          # photo: 'cat_picture.png',
           gender: 'female',
           size: 'big',
           breed: 'unknown',
@@ -280,7 +280,7 @@ RSpec.describe AnimalsController, type: :controller do
         put :update, params: { id: @animal.id, animal: {
           type: 'frog',
           name: 'o',
-          photo: 'photo.pdf',
+          # photo: 'photo.pdf',
           gender: nil,
           size: nil,
           breed: nil,
@@ -294,7 +294,7 @@ RSpec.describe AnimalsController, type: :controller do
         } }
         expect(@animal.type).to_not eq('frog')
         expect(@animal.name).to_not eq('o')
-        expect(@animal.photo).to_not eq('photo.pdf')
+        # expect(@animal.photo).to_not eq('photo.pdf')
         expect(@animal.gender).to_not eq(nil)
         expect(@animal.size).to_not eq(nil)
         expect(@animal.breed).to_not eq(nil)
@@ -311,7 +311,7 @@ RSpec.describe AnimalsController, type: :controller do
         put :update, params: { id: @animal.id, animal: {
           type: 'frog',
           name: 'o',
-          photo: 'photo.pdf',
+          # photo: 'photo.pdf',
           gender: nil,
           size: nil,
           breed: nil,
