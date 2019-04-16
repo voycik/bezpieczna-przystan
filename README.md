@@ -2,25 +2,33 @@
 
 [![Build Status](https://travis-ci.com/bezpieczna-przystan/bezpieczna-przystan.svg?branch=master)](https://travis-ci.com/bezpieczna-przystan/bezpieczna-przystan)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## App description
 
-Things you may want to cover:
+This app is made as a homepage for temporary nursing home for pets. It provides content menagement, like articlest and each pet card.
+In the nearest future it will privide possibility to contact with page owner and facebook integration.
 
-* Ruby version
+## Technology stack
 
-* System dependencies
+|                     Name                     | Version |
+| :------------------------------------------: | :-----: |
+|      [Ruby](https://www.ruby-lang.org)       |  2.6.1  |
+| [Ruby on Rails](http://www.rubyonrails.org/) |  5.2.2  |
+|   [PostgreSQL](http://www.postgresql.org/)   |  11.1   |
 
-* Configuration
+## Setup
 
-* Database creation
+- Configuration
+  `bundle install`
 
-* Database initialization
+- Database creation
+  `rails db:setup`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+- Running rails server
+  `rails s`
 
 * ...
+## Creating admin account
+
+- Open rails console
+- Type User.create(email: '<email here>', password: 'enter your password here')
+- Now you can log in on /admin
