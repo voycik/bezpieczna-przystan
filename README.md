@@ -1,4 +1,6 @@
-# README
+# Bezpieczna Przystań
+
+[![Build Status](https://travis-ci.com/bezpieczna-przystan/bezpieczna-przystan.svg?branch=master)](https://travis-ci.com/bezpieczna-przystan/bezpieczna-przystan)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
