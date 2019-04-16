@@ -11,4 +11,5 @@ class Animal < ApplicationRecord
   validates :come_date, presence: true
   validates :breed, presence: true
   validates :photo, presence: true, format: { with: /.(gif|jpg|png)\Z/i, message: 'Nieobsługiwany format. Wybierz plik .gif, .jpg, lub .png' }
+  validates :type, presence: true, inclusion: { in: ['Cat', 'Dog'] }
 end
