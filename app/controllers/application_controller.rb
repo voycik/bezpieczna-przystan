@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
   include Pundit
   protect_from_forgery
-  after_action :verify_authorized, except: %i[index show]
+  #after_action :verify_authorized, except: %i[index show]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AnimalsController < ApplicationController
-  before_action :find_animal, only: %i[show edit destroy]
+  before_action :find_animal, only: %i[show edit update destroy]
   before_action :authorize_animal, only: %i[edit update destroy]
   def index
     @animals = Animal.all
