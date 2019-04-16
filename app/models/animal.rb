@@ -11,4 +11,5 @@ class Animal < ApplicationRecord
   validates :come_date, presence: true
   validates :breed, presence: true
   has_many :images, as: :imageable
+  validates :type, presence: true, inclusion: { in: %w[Cat Dog] }
 end

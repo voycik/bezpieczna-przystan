@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   before_action :find_article, only: %i[show edit update destroy]
+  before_action :authorize_article, only: %i[edit update destroy]
   def index
     @articles = Article.paginate(page: params[:page], per_page: 7)
   end
@@ -10,10 +11,12 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    authorize @article
   end
 
   def create
     @article = Article.new(article_params)
+    authorize @article
     if @article.save
       params[:article][:image_data].each do |file|
           @article.images.create!(:image => file)
@@ -50,5 +53,9 @@ class ArticlesController < ApplicationController
 
   def find_article
     @article = Article.find(params[:id])
+  end
+
+  def authorize_article
+    authorize @article
   end
 end

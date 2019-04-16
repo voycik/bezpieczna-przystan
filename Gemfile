@@ -17,9 +17,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave', '~> 1.0'
+gem 'devise'
 gem 'faker'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'pundit'
 gem 'rubocop', require: false
 gem 'sentry-raven'
 gem 'simple_form'
