@@ -1,5 +1,5 @@
 .col-4
-  = simple_form_for(@animal) do |form|
+  = simple_form_for(@animal, url: animals_path) do |form|
     = form.input :type
     = form.input :name
     = form.input :photo
