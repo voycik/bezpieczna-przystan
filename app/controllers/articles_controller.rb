@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     authorize @article
     if @article.save
       params[:article][:image_data].each do |file|
-          @article.images.create!(:image => file)
+        @article.images.create!(image: file)
       end
       flash[:success] = 'Post opublikowany'
       redirect_to articles_path
@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :image_data => [])
+    params.require(:article).permit(:title, :body, image_data: [])
   end
 
   def find_article
