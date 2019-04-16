@@ -24,6 +24,8 @@ gem 'rubocop', require: false
 gem 'sentry-raven'
 gem 'simple_form'
 gem 'will_paginate', '~> 3.1.6'
+gem 'cloudinary'
+gem "mini_magick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
