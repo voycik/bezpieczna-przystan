@@ -3,5 +3,7 @@
 class Article < ApplicationRecord
   validates :title, presence: true, length: { minimum: 10 }
   validates :body, presence: true, length: { minimum: 10 }
-  validates :photo, allow_blank: true, format: { with: /.(gif|jpg|png)\Z/i, message: 'Nieobsługiwany format. Wybierz plik .gif, .jpg, lub .png' }
+  has_many :images, as: :imageable
+  attr_accessor :image_data
+  accepts_nested_attributes_for :images
 end

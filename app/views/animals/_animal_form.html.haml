@@ -2,7 +2,7 @@
   = simple_form_for(@animal, url: animals_path) do |form|
     = form.input :type
     = form.input :name
-    = form.input :photo
+    = form.input :image_data, as: :file, :input_html => { :multiple => true }, accept: 'image/png,image/gif,image/jpeg, image/jpg', name: 'animal[images][][:image_data]'
     = form.input :breed
     = form.input :gender
     = form.input :size

@@ -16,6 +16,23 @@ ActiveRecord::Schema.define(version: 20_190_414_200_621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
+  create_table 'animals', force: :cascade do |t|
+    t.string 'name', limit: 30, null: false
+    t.string 'type', null: false
+    t.string 'gender', null: false
+    t.string 'size', null: false
+    t.string 'purpose', null: false
+    t.boolean 'for_kids'
+    t.integer 'age', null: false
+    t.text 'general_info'
+    t.date 'come_date', null: false
+    t.date 'vaccination_date'
+    t.date 'sterilization_date'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'breed', null: false
+  end
+
   create_table 'admins', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
@@ -28,30 +45,20 @@ ActiveRecord::Schema.define(version: 20_190_414_200_621) do
     t.index ['reset_password_token'], name: 'index_admins_on_reset_password_token', unique: true
   end
 
-  create_table 'animals', force: :cascade do |t|
-    t.string 'name'
-    t.string 'type'
-    t.string 'gender'
-    t.string 'size'
-    t.string 'purpose'
-    t.boolean 'for_kids'
-    t.integer 'age'
-    t.string 'photo'
-    t.text 'general_info'
-    t.date 'come_date'
-    t.date 'vaccination_date'
-    t.date 'sterilization_date'
+  create_table 'articles', force: :cascade do |t|
+    t.string 'title', null: false
+    t.text 'body', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.string 'breed'
   end
 
-  create_table 'articles', force: :cascade do |t|
-    t.string 'title'
-    t.text 'body'
-    t.string 'photo'
+  create_table 'images', force: :cascade do |t|
+    t.string 'image', null: false
+    t.string 'imageable_type'
+    t.bigint 'imageable_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index %w[imageable_type imageable_id], name: 'index_images_on_imageable_type_and_imageable_id'
   end
 
   create_table 'users', force: :cascade do |t|

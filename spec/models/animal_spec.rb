@@ -19,7 +19,7 @@ RSpec.describe Animal, type: :model do
     it { is_expected.to have_db_column :purpose }
     it { is_expected.to have_db_column :for_kids }
     it { is_expected.to have_db_column :age }
-    it { is_expected.to have_db_column :photo }
+    # it { is_expected.to have_db_column :photo }
     it { is_expected.to have_db_column :general_info }
     it { is_expected.to have_db_column :come_date }
     it { is_expected.to have_db_column :vaccination_date }
