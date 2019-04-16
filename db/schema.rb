@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_04_14_165933) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string "file", null: false
+    t.string "image", null: false
     t.string "imageable_type"
     t.bigint "imageable_id"
     t.datetime "created_at", null: false
