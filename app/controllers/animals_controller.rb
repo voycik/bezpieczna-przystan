@@ -31,13 +31,17 @@ class AnimalsController < ApplicationController
   def update
     if @animal.update_attributes(animal_params)
       flash[:success] = 'Dane zwierzaka zaktualizowane pomyślnie'
-      redirect_to @animal
+      redirect_to animal_path
     else
       render 'edit'
     end
   end
 
-  def destroy; end
+  def destroy
+    @animal.destroy
+    flash[:success] = 'Zwierzątko zostało usunięte'
+    redirect_to animals_path
+  end
 
   private
 
