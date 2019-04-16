@@ -2,6 +2,7 @@
 
 class AnimalsController < ApplicationController
   before_action :find_animal, only: %i[show edit destroy]
+  before_action :authorize_animal, only: %i[edit update destroy]
   def index
     @animals = Animal.all
   end
@@ -25,17 +26,18 @@ class AnimalsController < ApplicationController
 
   def show; end
 
-  def edit
-    authorize @animal
-  end
+  def edit; end
 
   def update
-    authorize @animal
+    if @animal.update_attributes(animal_params)
+      flash[:success] = 'Dane zwierzaka zaktualizowane pomyślnie'
+      redirect_to @animal
+    else
+      render 'edit'
+    end
   end
 
-  def destroy
-    authorize @animal
-  end
+  def destroy; end
 
   private
 
@@ -47,5 +49,9 @@ class AnimalsController < ApplicationController
 
   def find_animal
     @animal = Animal.find(params[:id])
+  end
+
+  def authorize_animal
+    authorize @animal
   end
 end

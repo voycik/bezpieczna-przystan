@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   before_action :find_article, only: %i[show edit update destroy]
+  before_action :authorize_article, only: %i[edit update destroy]
   def index
     @articles = Article.paginate(page: params[:page], per_page: 7)
   end
@@ -24,12 +25,9 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    authorize @article
-  end
+  def edit; end
 
   def update
-    authorize @article
     if @article.update_attributes(article_params)
       flash[:success] = 'Post zaktualizowany'
       redirect_to @article
@@ -39,7 +37,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    authorize @article
     @article.destroy
     flash[:success] = 'Post usunięty'
     redirect_to articles_path
@@ -54,6 +51,8 @@ class ArticlesController < ApplicationController
   def find_article
     @article = Article.find(params[:id])
   end
-
+  def authorize_article
+    authorize @article
+  end
 
 end
