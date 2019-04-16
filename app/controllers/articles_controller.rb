@@ -51,8 +51,8 @@ class ArticlesController < ApplicationController
   def find_article
     @article = Article.find(params[:id])
   end
+
   def authorize_article
     authorize @article
   end
-
 end

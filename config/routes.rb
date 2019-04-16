@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  
   devise_for :user, skip: :all
   devise_scope :user do
     get 'admin', to: 'devise/sessions#new'

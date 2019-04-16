@@ -226,7 +226,7 @@ RSpec.describe ArticlesController, type: :controller do
         @article = FactoryBot.create(:article)
       end
 
-      it 'prevents deleting the article' do
+      it 'deletes the article' do
         expect do
           delete :destroy, params: { id: @article.id }
         end.to change { Article.count }.by(-1)
@@ -243,7 +243,7 @@ RSpec.describe ArticlesController, type: :controller do
         @article = FactoryBot.create(:article)
       end
 
-      it 'deletes the article' do
+      it 'prevents deleting the article' do
         expect do
           delete :destroy, params: { id: @article.id }
         end.to change { Article.count }.by(0)
