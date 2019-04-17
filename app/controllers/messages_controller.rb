@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.valid?
-      MessageMailer.contact(@message).deliver_later
+      MessageMailer.contact(@message).deliver_now
       redirect_to new_message_url
       flash[:notice] = "Dziękujemy za Twoją wiadomość, odezwiemy się najszybciej jak to możliwe."
     else
