@@ -82,7 +82,7 @@ RSpec.describe ArticlesController, type: :controller do
         expect do
           post :create, params: { article: {
             title: 'Perfect title for perfect article',
-            body: 'Perfect body for perfect article',
+            body: 'Perfect body for perfect article'
             # photo: 'article.png'
           } }
         end .to change { Article.count }.by(1)
@@ -91,7 +91,7 @@ RSpec.describe ArticlesController, type: :controller do
       it 'redirects to the new article' do
         post :create, params: { article: {
           title: 'Perfect title for perfect article',
-          body: 'Perfect body for perfect article',
+          body: 'Perfect body for perfect article'
           # photo: 'article.png'
         } }
         expect(response).to redirect_to articles_path
@@ -103,7 +103,7 @@ RSpec.describe ArticlesController, type: :controller do
         expect do
           post :create, params: { article: {
             title: nil,
-            body: nil,
+            body: nil
             # photo: nil
           } }
         end .to_not change { Article.count }
@@ -112,7 +112,7 @@ RSpec.describe ArticlesController, type: :controller do
       it 're-renders the new method' do
         post :create, params: { article: {
           title: nil,
-          body: nil,
+          body: nil
           # photo: nil
         } }
         expect(response).to render_template :new
@@ -168,7 +168,7 @@ RSpec.describe ArticlesController, type: :controller do
       it 'located the requested @article' do
         put :update, params: { id: @article.id, article: {
           title: 'Another perfect title for perfect article',
-          body: 'Another perfect body for perfect article',
+          body: 'Another perfect body for perfect article'
           # photo: 'updated_article.jpg'
         } }
         expect(assigns(:article)).to eq(@article)
@@ -177,7 +177,7 @@ RSpec.describe ArticlesController, type: :controller do
       it "changes @article's attributes" do
         put :update, params: { id: @article.id, article: {
           title: 'Even better title for perfect article',
-          body: 'Even better body for perfect article',
+          body: 'Even better body for perfect article'
           # photo: 'better_article.jpg'
         } }
         @article.reload
@@ -189,7 +189,7 @@ RSpec.describe ArticlesController, type: :controller do
       it 'redirects to the updated article' do
         put :update, params: { id: @article.id, article: {
           title: 'Even better title for perfect article',
-          body: 'Even better body for perfect article',
+          body: 'Even better body for perfect article'
           # photo: 'better_article.jpg'
         } }
         expect(response).to redirect_to @article
@@ -200,7 +200,7 @@ RSpec.describe ArticlesController, type: :controller do
       it "does not change @article's attributes" do
         put :update, params: { id: @article.id, article: {
           title: nil,
-          body: 'Too short',
+          body: 'Too short'
           # photo: 'No format'
         } }
         expect(@article.title).to_not eq(nil)
@@ -211,7 +211,7 @@ RSpec.describe ArticlesController, type: :controller do
       it 're-renders the edit method' do
         put :update, params: { id: @article.id, article: {
           title: nil,
-          body: 'Too short',
+          body: 'Too short'
           # photo: 'No format'
         } }
         expect(response).to render_template :edit
