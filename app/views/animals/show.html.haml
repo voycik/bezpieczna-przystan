@@ -3,7 +3,7 @@
   .col-12
     %h1 #{@animal.name}
   .col-4
-    %img.img-thumbnail{:alt => "Avatar", :src => "https://www.sunnyskyz.com/uploads/2017/11/b56qu-dog-figures-out-how-to-get-owners-to-stay-home-and-play-with-him-3.jpg"}
+    %img.img-thumbnail{alt: @animal.name, src: @animal.main_image}
   .col-8
     %p Rasa: #{@animal.breed}
     %p Płeć: #{@animal.gender}
@@ -17,10 +17,10 @@
     %p Data ostatniego szczepienia: #{@animal.vaccination_date}
     %p Szczegóły: #{@animal.general_info}
     %p
-    %button.btn.btn-success{:type => "button"} PSYgarnij mnie :)
+    %button.btn.btn-success{type: "button"} PSYgarnij mnie :)
 %p
 %p
   %strong Więcej zdjęć:
   .col-4
     - @animal.images.each do |image|
-      %img.img-thumbnail{:alt => "bezpieczna przystań", :src => image.image_url}
+      %img.img-thumbnail{alt: "bezpieczna przystań", alt: image.image_url}
