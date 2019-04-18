@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: %i[show edit update destroy]
   before_action :authorize_article, only: %i[edit update destroy]
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 7)
+    @articles = ArticleDecorator.decorate_collection(Article.all)
   end
 
   def show; end
