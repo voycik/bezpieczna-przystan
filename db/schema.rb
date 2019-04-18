@@ -36,40 +36,26 @@ ActiveRecord::Schema.define(version: 2019_04_17_110348) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
   create_table "animals", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.string "gender"
-    t.string "size"
-    t.string "purpose"
+    t.string "name", limit: 30, null: false
+    t.string "type", null: false
+    t.string "gender", null: false
+    t.string "size", null: false
+    t.string "purpose", null: false
     t.boolean "for_kids"
-    t.integer "age"
-    t.string "photo"
+    t.integer "age", null: false
     t.text "general_info"
-    t.date "come_date"
+    t.date "come_date", null: false
     t.date "vaccination_date"
     t.date "sterilization_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "breed"
+    t.string "breed", null: false
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.string "photo"
+    t.string "title", null: false
+    t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
