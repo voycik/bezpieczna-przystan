@@ -99,7 +99,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      it 'create new article' do
+      it 'doesn't create new article' do
         expect do
           post :create, params: { article: {
             title: nil,
