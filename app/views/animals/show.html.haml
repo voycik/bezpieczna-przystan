@@ -18,3 +18,9 @@
     %p Szczegóły: #{@animal.general_info}
     %p
     %button.btn.btn-success{:type => "button"} PSYgarnij mnie :)
+%p
+%p
+  %strong Więcej zdjęć:
+  .col-4
+    - @animal.images.each do |image|
+      %img.img-thumbnail{:alt => "bezpieczna przystań", :src => image.image_url}
