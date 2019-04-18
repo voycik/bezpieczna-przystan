@@ -1,8 +1,7 @@
 class ApplicationDecorator < Draper::Decorator
-  # Define methods for all decorated objects.
-  # Helpers are accessed through `helpers` (aka `h`). For example:
-  #
-  #   def percent_amount
-  #     h.number_to_percentage object.amount, precision: 2
-  #   end
+
+  def main_image
+    !!object.photo ? object.photo : object.images.any? ? object.images.first.image_url : "https://dummyimage.com/300x200/a3a3a3/fff.jpg&text=Brak+zdj%C4%99cia"
+  end
+
 end
