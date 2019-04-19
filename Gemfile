@@ -50,6 +50,7 @@ group :test do
   gem 'rails-controller-testing' # If you are using Rails 5.x
   gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'simplecov', require: false
+  gem 'capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
