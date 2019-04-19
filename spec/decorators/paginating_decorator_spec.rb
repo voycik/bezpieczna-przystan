@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe PaginationDecorator do
+RSpec.describe PaginatingDecorator do
 end

@@ -1,8 +1,9 @@
 %h1 Animals#index
 %p
+= will_paginate
 .card-deck
   - @animals.each do |animal|
-    .col-3
+    .col-4
       .card
         = link_to animal_path(animal) do
           %img.card-img-top{alt: "#{animal.name}", src: animal.main_image}/
@@ -10,3 +11,4 @@
             %h5.card-title="#{animal.name}"
 .row
   = link_to "Dodaj zwierzę", new_animal_path, type: 'button', class: 'btn btn-success btn-lg'
+= will_paginate
