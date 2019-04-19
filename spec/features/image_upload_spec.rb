@@ -21,6 +21,7 @@ RSpec.feature 'Creating Articles' do
     expect(page).to have_content('Perfect title for perfect article')
     expect(page).to have_content('Perfect body for perfect article')
     expect(Article.all.count).to eq(count + 1)
+    expect(Article.last.images.size).to eq(1)
   end
 
   scenario 'user creates a new article with multiple images uploaded' do
@@ -36,6 +37,7 @@ RSpec.feature 'Creating Articles' do
     expect(page).to have_content('Perfect title for perfect article')
     expect(page).to have_content('Perfect body for perfect article')
     expect(Article.all.count).to eq(count + 1)
+    expect(Article.last.images.size).to eq(2)
   end
 
   scenario 'user edits article and uploads new file' do
@@ -48,5 +50,6 @@ RSpec.feature 'Creating Articles' do
 
     expect(page).to have_content('Better title for perfect article')
     expect(page).to have_content('Better body for perfect article')
+    expect(article.images.size).to eq(1)
   end
 end
