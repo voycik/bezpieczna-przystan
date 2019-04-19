@@ -14,11 +14,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'activestorage-cloudinary-service'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
-gem 'activestorage-cloudinary-service'
 gem 'devise'
 gem 'faker'
 gem 'haml-rails'
@@ -48,6 +48,7 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rails-controller-testing' # If you are using Rails 5.x
   gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'simplecov', require: false

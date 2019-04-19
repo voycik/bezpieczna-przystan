@@ -1,5 +1,6 @@
-class MessageMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class MessageMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -10,7 +11,6 @@ class MessageMailer < ApplicationMailer
     @message = message.body
     @email = message.email
     @phone_number = message.phone_number
-
 
     mail to: [Rails.application.credentials[:email], 'bezpieczna.przystan.prod@gmail.com']
   end

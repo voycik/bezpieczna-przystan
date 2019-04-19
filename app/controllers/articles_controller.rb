@@ -32,6 +32,10 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update_attributes(article_params)
+      @article.images.destroy_all
+      params[:article][:image_data]&.each do |file|
+        @article.images.create!(image: file)
+      end
       flash[:success] = 'Post zaktualizowany'
       redirect_to @article
     else
