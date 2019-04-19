@@ -4,7 +4,7 @@ class AnimalsController < ApplicationController
   before_action :find_animal, only: %i[show edit update destroy]
   before_action :authorize_animal, only: %i[edit update destroy]
   def index
-    @animals = Animal.all
+    @animals = AnimalDecorator.decorate_collection(Animal.all.paginate(page: params[:page], per_page: 6))
   end
 
   def new

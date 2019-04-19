@@ -6,3 +6,8 @@
 %p
   %strong Body:
   = @article.body
+%p
+  %strong Zdjęcia:
+  .col-4
+    - @article.images.each do |image|
+      %img.img-thumbnail{:alt => "bezpieczna przystań", :src => image.image_url}
