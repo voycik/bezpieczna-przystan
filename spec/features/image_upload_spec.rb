@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.feature 'Creating Articles' do
   let(:user) { FactoryBot.create(:user) }
@@ -11,8 +13,8 @@ RSpec.feature 'Creating Articles' do
     count = Article.all.count
     visit new_article_path
 
-    fill_in 'article[title]', with: "Perfect title for perfect article"
-    fill_in 'article[body]', with: "Perfect body for perfect article"
+    fill_in 'article[title]', with: 'Perfect title for perfect article'
+    fill_in 'article[body]', with: 'Perfect body for perfect article'
     attach_file('article[image_data][]', File.join(Rails.root, '/spec/fixtures/test_image.jpg'))
     click_button('Create Article')
 
@@ -25,10 +27,10 @@ RSpec.feature 'Creating Articles' do
     count = Article.all.count
     visit new_article_path
 
-    fill_in 'article[title]', with: "Perfect title for perfect article"
-    fill_in 'article[body]', with: "Perfect body for perfect article"
+    fill_in 'article[title]', with: 'Perfect title for perfect article'
+    fill_in 'article[body]', with: 'Perfect body for perfect article'
     attach_file('article[image_data][]', [File.join(Rails.root, '/spec/fixtures/test_image.jpg'),
-                          File.join(Rails.root, '/spec/fixtures/test_image2.jpg')])
+                                          File.join(Rails.root, '/spec/fixtures/test_image2.jpg')])
     click_button('Create Article')
 
     expect(page).to have_content('Perfect title for perfect article')
@@ -39,8 +41,8 @@ RSpec.feature 'Creating Articles' do
   scenario 'user edits article and uploads new file' do
     visit edit_article_path(article)
 
-    fill_in 'article[title]', with: "Better title for perfect article"
-    fill_in 'article[body]', with: "Better body for perfect article"
+    fill_in 'article[title]', with: 'Better title for perfect article'
+    fill_in 'article[body]', with: 'Better body for perfect article'
     attach_file('article[image_data][]', File.join(Rails.root, '/spec/fixtures/test_image2.jpg'))
     click_button('Update Article')
 

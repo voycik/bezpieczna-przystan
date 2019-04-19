@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MessagesController < ApplicationController
   def new
     @message = Message.new
@@ -9,9 +11,9 @@ class MessagesController < ApplicationController
     if @message.valid?
       MessageMailer.contact(@message).deliver_now
       redirect_to new_message_url
-      flash[:notice] = "Dziękujemy za Twoją wiadomość, odezwiemy się najszybciej jak to możliwe."
+      flash[:notice] = 'Dziękujemy za Twoją wiadomość, odezwiemy się najszybciej jak to możliwe.'
     else
-      flash[:notice] = "Nie udało się wysłać wiadomości. Sprawdź błędy i spróbuj ponownie."
+      flash[:notice] = 'Nie udało się wysłać wiadomości. Sprawdź błędy i spróbuj ponownie.'
       render :new
     end
   end
