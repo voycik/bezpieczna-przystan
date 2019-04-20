@@ -6,7 +6,7 @@
   - @articles.each do |article|
     %tr
       %td
-        %img.img-fluid{salt: article.title, src: article.main_image}
+        %img.img-fluid{alt: article.title, src: article.main_image}
       %td= article.title
       %td= article.body
       %td= link_to 'Show', article_path(article)
