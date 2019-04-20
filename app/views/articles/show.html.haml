@@ -10,4 +10,4 @@
   %strong Zdjęcia:
   .col-4
     - @article.images.each do |image|
-      %img.img-thumbnail{:alt => "bezpieczna przystań", :src => image.image_url}
+      %img.img-thumbnail{:alt => "bezpieczna przystań", :src => image.image_url, :id => "article_image_#{image.id}"}
