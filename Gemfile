@@ -20,6 +20,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem 'devise'
+gem 'draper'
 gem 'faker'
 gem 'haml-rails'
 gem 'jquery-rails'
@@ -29,7 +30,6 @@ gem 'rubocop', require: false
 gem 'sentry-raven'
 gem 'simple_form'
 gem 'will_paginate', '~> 3.1.6'
-gem 'draper'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
