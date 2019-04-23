@@ -365,10 +365,9 @@ RSpec.describe AnimalsController, type: :controller do
     end
   end
 
-
   describe 'GET #adopt' do
     before :each do
-      get :adoption, params: { animal_id: dog.id}
+      get :adoption, params: { animal_id: dog.id }
     end
 
     it 'returns http success' do
@@ -388,7 +387,7 @@ RSpec.describe AnimalsController, type: :controller do
     context 'with valid attributes' do
       it 'send new message' do
         @animal = dog
-        post :send_adoption_form, params: {animal_id: dog.id, dog_adoption: {
+        post :send_adoption_form, params: { animal_id: dog.id, dog_adoption: {
           name: 'John Rambo',
           email: 'john@example.com',
           phone_number: '123123123',
@@ -397,12 +396,32 @@ RSpec.describe AnimalsController, type: :controller do
           children_age: '10 - 12',
           other_animals: 'no',
           had_dog: 'yes',
-          hours_alone:  '8',
+          hours_alone: '8',
           comments: 'I really like dogs',
           dog_name: 'Fafik'
         } }
 
         expect(flash[:notice]).to eq 'Dziękujemy za Twoją wiadomość, odezwiemy się najszybciej jak to możliwe.'
+      end
+    end
+    context 'with invalid attributes' do
+      it 'prevents sending new message' do
+        @animal = dog
+        post :send_adoption_form, params: { animal_id: dog.id, dog_adoption: {
+          name: nil,
+          email: 'john@com',
+          phone_number: 'no phone',
+          where_keep: nil,
+          free_time: nil,
+          children_age: nil,
+          other_animals: nil,
+          had_dog: nil,
+          hours_alone: nil,
+          comments: nil,
+          dog_name: nil
+        } }
+
+        expect(flash[:notice]).to eq 'Nie udało się przesłać formularza. Sprawdź błędy i spróbuj ponownie.'
       end
     end
   end

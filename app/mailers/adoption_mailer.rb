@@ -20,6 +20,6 @@ class AdoptionMailer < ApplicationMailer
     @hours_alone = adoption.hours_alone
     @comments = adoption.comments
 
-    mail to: 'voycik@gmail.com'
+    mail to: [Rails.application.credentials[:email], 'bezpieczna.przystan.prod@gmail.com'], from: adoption.email
   end
 end
