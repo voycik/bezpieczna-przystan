@@ -364,4 +364,46 @@ RSpec.describe AnimalsController, type: :controller do
       end
     end
   end
+
+
+  describe 'GET #adopt' do
+    before :each do
+      get :adoption, params: { animal_id: dog.id}
+    end
+
+    it 'returns http success' do
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'assigns the requested dog to @animal' do
+      expect(assigns(:animal)).to eq(dog)
+    end
+
+    it 'renders the :adoption view' do
+      expect(response).to render_template(:adoption)
+    end
+  end
+
+  describe 'POST #send_adoption_form' do
+    context 'with valid attributes' do
+      it 'send new message' do
+        @animal = dog
+        post :send_adoption_form, params: {animal_id: dog.id, dog_adoption: {
+          name: 'John Rambo',
+          email: 'john@example.com',
+          phone_number: '123123123',
+          where_keep: 'Home',
+          free_time: 'Running',
+          children_age: '10 - 12',
+          other_animals: 'no',
+          had_dog: 'yes',
+          hours_alone:  '8',
+          comments: 'I really like dogs',
+          dog_name: 'Fafik'
+        } }
+
+        expect(flash[:notice]).to eq 'Dziękujemy za Twoją wiadomość, odezwiemy się najszybciej jak to możliwe.'
+      end
+    end
+  end
 end
