@@ -17,7 +17,8 @@
     %p Data ostatniego szczepienia: #{@animal.vaccination_date}
     %p Szczegóły: #{@animal.general_info}
     %p
-    %button.btn.btn-success{type: "button"} PSYgarnij mnie :)
+      = link_to 'PSYgarnij mnie :)', animal_adoption_path(@animal), method: :get, class: 'btn btn-success btn-lg'
+
 %p
 %p
   %strong Więcej zdjęć:
