@@ -11,3 +11,5 @@
   .col-4
     - @article.images.each do |image|
       %img.img-thumbnail{:alt => "bezpieczna przystań", :src => image.image_url, :id => "article_image_#{image.id}"}
+= social_share_button_tag(@article.title, :allow_sites => %w(twitter))
+= social_share_button_tag(@article.title, :allow_sites => %w(facebook), :url => article_path(@article), desc: @article.title)

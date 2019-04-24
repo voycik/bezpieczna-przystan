@@ -6,9 +6,11 @@
     .col-4
       .card
         = link_to animal_path(animal) do
-          %img.card-img-top{alt: "#{animal.name}", src: animal.main_image}/
+          %img.card-img-top{alt: "#{animal.name}", src: animal.main_image, id: "animal_image_main"}/
           .card-body
             %h5.card-title="#{animal.name}"
+        = social_share_button_tag("#{animal.name} szuka ciepłego domu!", :allow_sites => %w(twitter))
+        = social_share_button_tag("#{animal.name} szuka ciepłego domu!", :allow_sites => %w(facebook), :url => animal_path(animal), desc: animal.name)
 .row
   = link_to "Dodaj zwierzę", new_animal_path, type: 'button', class: 'btn btn-success btn-lg'
 = will_paginate

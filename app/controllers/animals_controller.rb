@@ -17,6 +17,9 @@ class AnimalsController < ApplicationController
     @animal = Animal.new(animal_params)
     authorize @animal
     if @animal.save
+      params[:animal][:image_data]&.each do |file|
+        @animal.images.create!(image: file)
+      end
       flash[:success] = 'Pomyślnie dodano nowego zwierzaczka.'
       redirect_to animals_path
     else
@@ -33,6 +36,10 @@ class AnimalsController < ApplicationController
 
   def update
     if @animal.update_attributes(animal_params)
+      @animal.images.destroy_all
+      params[:animal][:image_data]&.each do |file|
+        @animal.images.create!(image: file)
+      end
       flash[:success] = 'Dane zwierzaka zaktualizowane pomyślnie'
       redirect_to animal_path
     else

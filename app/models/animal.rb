@@ -10,6 +10,8 @@ class Animal < ApplicationRecord
   validates :general_info, length: { maximum: 1000 }
   validates :come_date, presence: true
   validates :breed, presence: true
-  has_many :images, as: :imageable
   validates :type, presence: true, inclusion: { in: %w[Cat Dog] }
+  has_many :images, as: :imageable
+  attr_accessor :image_data
+  accepts_nested_attributes_for :images
 end

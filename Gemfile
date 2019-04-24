@@ -29,6 +29,7 @@ gem 'pundit'
 gem 'rubocop', require: false
 gem 'sentry-raven'
 gem 'simple_form'
+gem 'social-share-button'
 gem 'will_paginate', '~> 3.1.6'
 
 group :development, :test do
