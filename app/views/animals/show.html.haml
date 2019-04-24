@@ -3,7 +3,7 @@
   .col-12
     %h1 #{@animal.name}
   .col-4
-    %img.img-thumbnail{alt: @animal.name, src: @animal.main_image}
+    %img.img-thumbnail{alt: @animal.name, src: @animal.main_image, id:"#animal_image_main"}
   .col-8
     %p Rasa: #{@animal.breed}
     %p Płeć: #{@animal.gender}
@@ -26,4 +26,4 @@
   %strong Więcej zdjęć:
   .col-4
     - @animal.images.each do |image|
-      %img.img-thumbnail{alt: "bezpieczna przystań", alt: image.image_url}
+      %img.img-thumbnail{alt: "bezpieczna przystań", src: image.image_url, id:"#animal_image_#{image.id}"}
