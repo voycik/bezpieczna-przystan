@@ -10,7 +10,7 @@
           .card-body
             %h5.card-title="#{animal.name}"
         = social_share_button_tag("#{animal.name} szuka ciepłego domu!", :allow_sites => %w(twitter))
-        = social_share_button_tag("#{animal.name} szuka ciepłego domu!", :allow_sites => %w(facebook), :url => animal_url(animal), desc: animal.name)
+        = social_share_button_tag(animal.name, :allow_sites => %w(facebook), :url => animal_url(animal), desc: "#{animal.name} szuka ciepłego domu!")
 .row
   = link_to "Dodaj zwierzę", new_animal_path, type: 'button', class: 'btn btn-success btn-lg'
 = will_paginate
