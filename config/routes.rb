@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     get 'admin', to: 'devise/sessions#new'
     post 'admin', to: 'devise/sessions#create'
   end
-  resources :animals, except: %i[adoption send_adoption_form] do
-    get 'adopt', to: 'animals#adoption', as: 'adoption'
-    post 'adopt', to: 'animals#send_adoption_form', as: 'send_adoption_form'
+  resources :animals do
+    get 'adopt', to: 'adoptions#new', as: 'adoption'
+    post 'adopt', to: 'adoptions#create', as: 'send_adoption_form'
   end
 
   resources :articles
