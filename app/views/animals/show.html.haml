@@ -17,7 +17,7 @@
     %p Data ostatniego szczepienia: #{@animal.vaccination_date}
     %p Szczegóły: #{@animal.general_info}
     = social_share_button_tag("#{@animal.name} szuka ciepłego domu!", :allow_sites => %w(twitter))
-    = social_share_button_tag("#{@animal.name} szuka ciepłego domu!", :allow_sites => %w(facebook), :url => animal_path(@animal), desc: @animal.name)
+    = social_share_button_tag("#{@animal.name} szuka ciepłego domu!", :allow_sites => %w(facebook), :url => animal_url(@animal), desc: @animal.name)
     %p
       = link_to 'PSYgarnij mnie :)', animal_adoption_path(@animal), method: :get, class: 'btn btn-success btn-lg'
 
