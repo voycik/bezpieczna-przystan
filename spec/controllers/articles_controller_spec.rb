@@ -7,7 +7,7 @@ RSpec.describe ArticlesController, type: :controller do
     expect(FactoryBot.create(:article)).to be_valid
   end
   let(:user) { FactoryBot.create(:user) }
-  let(:article) { FactoryBot.create(:article) }
+  let!(:article) { FactoryBot.create(:article) }
   subject { article }
 
   describe 'GET #index' do
@@ -15,34 +15,56 @@ RSpec.describe ArticlesController, type: :controller do
       get :index
     end
 
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
+    context 'html' do
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'populates an array of articles' do
+        expect(assigns(:articles)).to eq([article])
+      end
+
+      it 'renders the :index view' do
+        expect(response).to render_template(:index)
+      end
     end
 
-    it 'populates an array of articles' do
-      expect(assigns(:articles)).to eq([article])
-    end
-
-    it 'renders the :index view' do
-      expect(response).to render_template(:index)
+    context 'json' do
+      before do
+        get :index, format: :json
+      end
+      it 'renders the :index view as JSON' do
+        expect(response).to have_http_status(200)
+        expect(JSON.parse(response.body)).to have_content(article.title)
+      end
     end
   end
 
   describe 'GET #show' do
-    before :each do
-      get :show, params: { id: article.id }
-    end
+    context 'html' do
+      before :each do
+        get :show, params: { id: article.id }
+      end
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
 
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
-    end
+      it 'assigns the requested article to @article' do
+        expect(assigns(:article)).to eq(article)
+      end
 
-    it 'assigns the requested article to @article' do
-      expect(assigns(:article)).to eq(article)
+      it 'renders the :show view' do
+        expect(response).to render_template(:show)
+      end
     end
-
-    it 'renders the :show view' do
-      expect(response).to render_template(:show)
+    context 'json' do
+      before do
+        get :show, params: { id: article.id }, format: :json
+      end
+      it 'renders the :index view as JSON' do
+        expect(response).to have_http_status(200)
+        expect(JSON.parse(response.body)).to have_content(article.title)
+      end
     end
   end
 

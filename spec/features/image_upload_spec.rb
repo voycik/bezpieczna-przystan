@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.feature 'Creating Articles' do
   let(:user) { FactoryBot.create(:user) }
@@ -12,8 +14,8 @@ RSpec.feature 'Creating Articles' do
     count = Article.all.count
     visit new_article_path
 
-    fill_in 'article[title]', with: "Perfect title for perfect article"
-    fill_in 'article[body]', with: "Perfect body for perfect article"
+    fill_in 'article[title]', with: 'Perfect title for perfect article'
+    fill_in 'article[body]', with: 'Perfect body for perfect article'
     attach_file('article[image_data][]', File.join(Rails.root, '/spec/fixtures/test_image.jpg'))
     click_button('Create Article')
 
@@ -31,10 +33,10 @@ RSpec.feature 'Creating Articles' do
     count = Article.all.count
     visit new_article_path
 
-    fill_in 'article[title]', with: "Perfect title for perfect article"
-    fill_in 'article[body]', with: "Perfect body for perfect article"
+    fill_in 'article[title]', with: 'Perfect title for perfect article'
+    fill_in 'article[body]', with: 'Perfect body for perfect article'
     attach_file('article[image_data][]', [File.join(Rails.root, '/spec/fixtures/test_image.jpg'),
-                          File.join(Rails.root, '/spec/fixtures/test_image2.jpg')])
+                                          File.join(Rails.root, '/spec/fixtures/test_image2.jpg')])
     click_button('Create Article')
 
     expect(page).to have_content('Perfect title for perfect article')
@@ -54,8 +56,8 @@ RSpec.feature 'Creating Articles' do
     article.images.create!(image: File.open("#{Rails.root}/spec/fixtures/test_image.jpg"))
     first_image_url = article.images.first.image_url
 
-    fill_in 'article[title]', with: "Better title for perfect article"
-    fill_in 'article[body]', with: "Better body for perfect article"
+    fill_in 'article[title]', with: 'Better title for perfect article'
+    fill_in 'article[body]', with: 'Better body for perfect article'
     attach_file('article[image_data][]', File.join(Rails.root, '/spec/fixtures/test_image2.jpg'))
     click_button('Update Article')
 
@@ -73,24 +75,24 @@ RSpec.feature 'Creating Articles' do
     count = Animal.all.count
     visit new_animal_path
 
-    fill_in 'animal[name]', with: "SampleCat"
-    fill_in 'animal[type]', with: "Cat"
-    fill_in 'animal[gender]', with: "Female"
-    fill_in 'animal[size]', with: "Small"
+    fill_in 'animal[name]', with: 'SampleCat'
+    fill_in 'animal[type]', with: 'Cat'
+    fill_in 'animal[gender]', with: 'Female'
+    fill_in 'animal[size]', with: 'Small'
     fill_in 'animal[age]', with: 3
-    fill_in 'animal[purpose]', with: "House"
+    fill_in 'animal[purpose]', with: 'House'
     check 'animal[for_kids]'
-    fill_in 'animal[general_info]', with: "Cute cat"
-    fill_in 'animal[breed]', with: "Siamese"
-    select('2017', :from => 'animal[come_date(1i)]')
-    select('December', :from => 'animal[come_date(2i)]')
-    select('8', :from => 'animal[come_date(3i)]')
-    select('2017', :from => 'animal[sterilization_date(1i)]')
-    select('September', :from => 'animal[sterilization_date(2i)]')
-    select('5', :from => 'animal[sterilization_date(3i)]')
-    select('2016', :from => 'animal[vaccination_date(1i)]')
-    select('June', :from => 'animal[vaccination_date(2i)]')
-    select('11', :from => 'animal[vaccination_date(3i)]')
+    fill_in 'animal[general_info]', with: 'Cute cat'
+    fill_in 'animal[breed]', with: 'Siamese'
+    select('2017', from: 'animal[come_date(1i)]')
+    select('December', from: 'animal[come_date(2i)]')
+    select('8', from: 'animal[come_date(3i)]')
+    select('2017', from: 'animal[sterilization_date(1i)]')
+    select('September', from: 'animal[sterilization_date(2i)]')
+    select('5', from: 'animal[sterilization_date(3i)]')
+    select('2016', from: 'animal[vaccination_date(1i)]')
+    select('June', from: 'animal[vaccination_date(2i)]')
+    select('11', from: 'animal[vaccination_date(3i)]')
     attach_file('animal[image_data][]', File.join(Rails.root, '/spec/fixtures/test_image.jpg'))
     click_button('Create Animal')
 
