@@ -6,6 +6,10 @@ class AnimalsController < ApplicationController
 
   def index
     @animals = AnimalDecorator.decorate_collection(Animal.all.paginate(page: params[:page], per_page: 6))
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @animals }
+    end
   end
 
   def new
@@ -30,6 +34,10 @@ class AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id]).decorate
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @animal }
+    end
   end
 
   def edit; end
