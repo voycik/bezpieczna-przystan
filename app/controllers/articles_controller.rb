@@ -5,9 +5,18 @@ class ArticlesController < ApplicationController
   before_action :authorize_article, only: %i[edit update destroy]
   def index
     @articles = ArticleDecorator.decorate_collection(Article.all.paginate(page: params[:page], per_page: 7))
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @articles }
+    end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @article }
+    end
+  end
 
   def new
     @article = Article.new

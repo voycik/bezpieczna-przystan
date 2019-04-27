@@ -8,45 +8,68 @@ RSpec.describe AnimalsController, type: :controller do
     expect(FactoryBot.create(:cat)).to be_valid
   end
   let(:user) { FactoryBot.create(:user) }
-  let(:dog) { FactoryBot.create(:dog) }
+  let!(:dog) { FactoryBot.create(:dog) }
   subject { animal }
 
   describe 'GET #index' do
-    before :each do
-      get :index
+    context 'html' do
+      before :each do
+        get :index
+      end
+
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'populates an array of animals' do
+        expect(assigns(:animals)).to eq([dog])
+      end
+
+      it 'renders the :index view' do
+        expect(response).to render_template(:index)
+      end
     end
 
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'populates an array of animals' do
-      expect(assigns(:animals)).to eq([dog])
-    end
-
-    it 'renders the :index view' do
-      expect(response).to render_template(:index)
+    context 'json' do
+      before do
+        get :index, format: :json
+      end
+      it 'renders the :index view as JSON' do
+        expect(response).to have_http_status(200)
+        expect(JSON.parse(response.body)).to have_content(dog.name)
+      end
     end
   end
 
   describe 'GET #show' do
-    before :each do
-      get :show, params: { id: dog.id }
+    context 'html' do
+      before :each do
+        get :show, params: { id: dog.id }
+      end
+
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'assigns the requested dog to @animal' do
+        expect(assigns(:animal)).to eq(dog)
+      end
+
+      it 'renders the :show view' do
+        expect(response).to render_template(:show)
+      end
     end
 
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'assigns the requested dog to @animal' do
-      expect(assigns(:animal)).to eq(dog)
-    end
-
-    it 'renders the :show view' do
-      expect(response).to render_template(:show)
+    context 'json' do
+      before do
+        get :show, params: { id: dog.id }, format: :json
+      end
+      it 'renders the :index view as JSON' do
+        expect(response).to have_http_status(200)
+        expect(JSON.parse(response.body)).to have_content(dog.general_info)
+      end
     end
   end
-
   describe 'GET #new' do
     context 'with signed in user' do
       before :each do
