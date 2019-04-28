@@ -98,7 +98,7 @@ RSpec.feature 'Creating Articles' do
 
     image = Animal.last.images.last
     expect(page).to have_content('SampleCat')
-    # expect(page.find("#animal_image_main")['src']).to have_content image.image_url
+    expect(page.find('#animal_image_main')['src']).to have_content image.image_url
     expect(Animal.all.count).to eq(count + 1)
     expect(Animal.last.images.size).to eq(1)
 
@@ -113,6 +113,6 @@ RSpec.feature 'Creating Articles' do
     expect(page).to have_content('2017-09-05')
     expect(page).to have_content('2016-06-11')
     expect(page).to have_content('Siamese')
-    # expect(page.find("#animal_image_main")['src']).to have_content image.image_url
+    expect(page.find('#animal_image_main')['src']).to have_content image.image_url
   end
 end
