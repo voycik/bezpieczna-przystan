@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class AnimalsController < ApplicationController
-  before_action :find_animal, only: %i[edit update destroy]
-  before_action :authorize_animal, only: %i[edit update destroy]
+  before_action :find_animal, only: %i[edit update destroy update_photo]
+  before_action :authorize_animal, only: %i[edit update destroy update_photo]
 
   def index
     @animals = AnimalDecorator.decorate_collection(Animal.all.paginate(page: params[:page], per_page: 6))
@@ -49,10 +49,15 @@ class AnimalsController < ApplicationController
         @animal.images.create!(image: file)
       end
       flash[:success] = 'Dane zwierzaka zaktualizowane pomyślnie'
-      redirect_to animal_path
+      redirect_to animal_path(@animal)
     else
       render 'edit'
     end
+  end
+
+  def update_photo
+    @animal.update_attributes(params.permit(:photo))
+    redirect_to animal_path
   end
 
   def destroy
@@ -66,7 +71,7 @@ class AnimalsController < ApplicationController
   def animal_params
     params.require(:animal).permit(:name, :type, :gender, :size, :age,
                                    :purpose, :for_kids, :general_info, :come_date, :vaccination_date,
-                                   :sterilization_date, :breed, image_data: [])
+                                   :sterilization_date, :breed, :photo, image_data: [])
   end
 
   def find_animal
