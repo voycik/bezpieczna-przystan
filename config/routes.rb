@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   end
 
-  resources :articles
+  resources :articles do
+    put :update_photo, on: :member
+  end
   root 'articles#index'
   get 'contact-me', to: 'messages#new', as: 'new_message'
   post 'contact-me', to: 'messages#create', as: 'create_message'
