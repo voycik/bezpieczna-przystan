@@ -49,7 +49,7 @@ class AnimalsController < ApplicationController
         @animal.images.create!(image: file)
       end
       flash[:success] = 'Dane zwierzaka zaktualizowane pomyślnie'
-      redirect_to @animal
+      redirect_to animal_path(@animal)
     else
       render 'edit'
     end
