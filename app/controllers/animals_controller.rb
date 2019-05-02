@@ -13,6 +13,7 @@ class AnimalsController < ApplicationController
   end
 
   def new
+    @url = animals_path
     @animal = Animal.new
     authorize @animal
   end
@@ -40,7 +41,9 @@ class AnimalsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @url = animal_path(@animal)
+  end
 
   def update
     if @animal.update_attributes(animal_params)
