@@ -31,9 +31,10 @@ module BezpiecznaPrzystan
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.action_dispatch.default_headers = {
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Request-Method' => %w{GET POST}.join(",")
+      }
   end
 end
-config.action_dispatch.default_headers = {
-    'Access-Control-Allow-Origin' => '*',
-    'Access-Control-Request-Method' => %w{GET POST}.join(",")
-  }
