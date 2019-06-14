@@ -1,0 +1,30 @@
+Nowości na blogu
+
+
+
+.jumbotron
+  %h2
+    Nowości na blogu
+    .col-12
+      %h1 #{@article.title}
+    .col-4
+      %img.img-thumbnail{alt: @article.title, src: @article.main_image, id:"article_image_main"}
+    .col-8
+      %p #{@article.body}
+
+  %p
+  %a.btn.btn-success.btn-md{:href => articles_path, :role => "button"} Pozostałe artykuły
+
+.jumbotron
+  %h2
+    Poznaj naszych nowych podopiecznych
+  .card-deck
+    - @animals.each do |animal|
+      .col-4
+        .card
+          = link_to animal_path(animal) do
+            %img.card-img-top{alt: "#{animal.name}", src: animal.main_image, id: "animal_image_main"}/
+            .card-body
+              %h5.card-title="#{animal.name}"
+  %p
+  %a.btn.btn-success.btn-md{:href => animals_path, :role => "button"} Pozostałe czworonogi
