@@ -8,28 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-
-
-
-    %nav.navbar.navbar-expand-lg.navbar-dark.bg-success
-      %a.navbar-brand{:href => "#"}
-        %img.d-inline-block.align-top{:alt => "", :height => "30", :src => "logo.png", :width => "30"}/
-        Bezpieczna Przystań
-    %p.notice= notice
-    %p.alert= alert
+    = render 'shared/header'
     .container.col-10
       = yield
-
-    %nav.navbar.navbar-bottom.navbar-dark.bg-success
-      %navbar-brand.mx-auto.text-center
-        .p.font-weight-bolder Dom tymczasowy dla zwierząt
-        .p.font-weight-bolder Bezpieczna Przystań
-
-        .p Linarczyk 13C
-        .p 86-300 Grudziądz
-
-        .p Email: info@bezpiecznaprzystan.pl
-        .p Telefon: 757 577 543
-
-        .p Numer konta bankowego:
-        .p.font-weight-bold 10 1010 2300 0026 1395 1000 0025 2183
+    = render 'shared/footer'
