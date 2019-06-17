@@ -1,4 +1,3 @@
-%h1 Animals#show
 .row
   .col-12
     %h1 #{@animal.name}
@@ -23,8 +22,13 @@
 
 %p
 %p
-  %strong Więcej zdjęć:
-  .col-4
-    - @animal.images.each do |image|
-      %img.img-thumbnail{alt: "bezpieczna przystań", src: image.image_url, id:"#animal_image_#{image.id}"}
-      = link_to 'Ustaw jako główne zdjęcie', update_photo_animal_path(@animal, photo: image.image_url), method: :put, class: 'btn btn-secondary btn-lg'
+  -if @animal.images.count > 1
+    %strong Zdjęcia:
+    .card-deck
+      - @animal.images.each do |image|
+        -# - if image.image_url != @animal.main_image
+        .card
+          %img.card-img-top{src: image.image_url}
+            - if user_signed_in?
+              .card-body
+                = link_to 'Ustaw jako główne zdjęcie', update_photo_animal_path(@animal, photo: image.image_url), method: :put, class: 'btn btn-secondary btn-sm'

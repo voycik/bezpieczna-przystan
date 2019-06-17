@@ -1,18 +1,20 @@
 .jumbotron
-  %h2
+  %h1
     Nowości na blogu
-    .col-12
-      %h1 #{@article.title}
-    .col-4
-      %img.img-thumbnail{alt: @article.title, src: @article.main_image, id:"article_image_main"}
-    .col-8
-      %p #{@article.body}
+    %p
+    .row
+      .col-12
+        %h3 #{@article.title}
+      .col-3
+        %img.img-thumbnail{alt: @article.title, src: @article.main_image, id:"article_image_main"}/
+      .col-8
+        %p.lead #{@article.body}
 
   %p
   %a.btn.btn-success.btn-md{:href => articles_path, :role => "button"} Pozostałe artykuły
 
 .jumbotron
-  %h2
+  %h1
     Poznaj naszych nowych podopiecznych
   .card-deck
     - @animals.each do |animal|

@@ -1,16 +1,21 @@
-%h1 Articles#show
-
-%p
-  %strong Title:
-  = @article.title
-%p
-  %strong Body:
-  = @article.body
-%p
-  %strong Zdjęcia:
+%h1
+  =@article.title
+.row
   .col-4
-    - @article.images.each do |image|
-      %img.img-thumbnail{:alt => "bezpieczna przystań", :src => image.image_url, :id => "article_image_#{image.id}"}
-        = link_to 'Ustaw jako główne zdjęcie', update_photo_article_path(@article, photo: image.image_url), method: :put, class: 'btn btn-secondary btn-lg'
+    %img.img-fluid{src: @article.main_image}
+  .col-6
+    = @article.body
+%p
+  -if @article.images.any?
+    %strong Zdjęcia:
+    .card-deck
+      - @article.images.each do |image|
+        -# - if image.image_url != @article.main_image
+        .card
+          %img.card-img-top{src: image.image_url, :id => "article_image_#{image.id}"}
+            - if user_signed_in?
+              .card-body
+                = link_to 'Ustaw jako główne zdjęcie', update_photo_article_path(@article, photo: image.image_url), method: :put, class: 'btn btn-secondary btn-sm'
+
 = social_share_button_tag(@article.title, :allow_sites => %w(twitter))
 = social_share_button_tag(@article.title, :allow_sites => %w(facebook), :url => article_url(@article), desc: @article.title)

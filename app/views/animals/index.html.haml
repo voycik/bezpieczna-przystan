@@ -1,5 +1,7 @@
-%h1 Animals#index
+%h1 Poznaj naszych podopiecznych!
 %p
+%p.lead Zachęcamy do zapoznania się z aktualnymi mieszkańcami Bezpiecznej Przystani. Zainteresowanych adopcją zapraszamy do kontaktu. Niezainteresowanych, do udostępniania na Facebooku i Tweeterze :)
+
 = will_paginate
 .card-deck
   - @animals.each do |animal|
@@ -9,8 +11,9 @@
           %img.card-img-top{alt: "#{animal.name}", src: animal.main_image, id: "animal_image_main"}/
           .card-body
             %h5.card-title="#{animal.name}"
-        = social_share_button_tag("#{animal.name} szuka ciepłego domu!", :allow_sites => %w(twitter))
-        = social_share_button_tag(animal.name, :allow_sites => %w(facebook), :url => animal_url(animal), desc: "#{animal.name} szuka ciepłego domu!")
+            .row
+              = social_share_button_tag("#{animal.name} szuka ciepłego domu!", :allow_sites => %w(twitter))
+              = social_share_button_tag(animal.name, :allow_sites => %w(facebook), :url => animal_url(animal), desc: "#{animal.name} szuka ciepłego domu!")
 .row
   = link_to "Dodaj zwierzę", new_animal_path, type: 'button', class: 'btn btn-success btn-lg'
 = will_paginate

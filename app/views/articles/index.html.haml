@@ -1,16 +1,17 @@
-%h1 Articles#index
+%h1 Co u nas słychać?
 = will_paginate
-%table
-  %tr
-
-  - @articles.each do |article|
-    %tr
-      %td
-        %img.img-fluid{alt: article.title, src: article.main_image}
-      %td= article.title
-      %td= article.body
-      %td= link_to 'Show', article_path(article)
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= social_share_button_tag(article.title, :allow_sites => %w(twitter))
-      %td= social_share_button_tag(article.title, :allow_sites => %w(facebook), :url => article_url(article), desc: article.title)
+- @articles.each do |article|
+  .jumbotron
+    .row
+      .col-4
+        %img.img-fluid{src: article.main_image}
+      .col-6
+        .h3
+          .article-title
+            = link_to article.title, article_path(article)
+        .article-body
+          = truncate(article.body, length: 1000)
+      .row
+        = social_share_button_tag(article.title, :allow_sites => %w(twitter))
+        = social_share_button_tag(article.title, :allow_sites => %w(facebook), :url => article_url(article), desc: article.title)
 = will_paginate
