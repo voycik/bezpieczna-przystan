@@ -11,10 +11,10 @@
           %img.card-img-top{alt: "#{animal.name}", src: animal.main_image, id: "animal_image_main"}/
           .card-body
             %h5.card-title="#{animal.name}"
-            .row.justify-content-center
+            .row.justify-content-end
               = social_share_button_tag("#{animal.name} szuka ciepłego domu!", :allow_sites => %w(twitter))
               = social_share_button_tag(animal.name, :allow_sites => %w(facebook), :url => animal_url(animal), desc: "#{animal.name} szuka ciepłego domu!")
-            .row.justify-content-center
+            .row.justify-content-end
               -if user_signed_in?
                 = link_to 'Edytuj', edit_animal_path(animal), class: 'btn btn-warning btn-sm'
                 = link_to 'Usuń', animal_path(animal), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Czy na pewno chcesz usunąć  tego zwierzaka?' }
