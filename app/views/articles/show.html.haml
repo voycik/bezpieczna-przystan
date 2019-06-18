@@ -1,3 +1,8 @@
+-if user_signed_in?
+  .row
+    = link_to 'Edytuj artykuł', edit_article_path(@article), class: 'btn btn-warning btn-md'
+    = link_to 'Usuń artykuł', article_path(@article), method: :delete, class: 'btn btn-danger btn-md', data: { confirm: 'Czy na pewno chcesz usunąć ten artykuł?' }
+
 %h1
   =@article.title
 .row
@@ -17,5 +22,6 @@
               .card-body
                 = link_to 'Ustaw jako główne zdjęcie', update_photo_article_path(@article, photo: image.image_url), method: :put, class: 'btn btn-secondary btn-sm'
 
-= social_share_button_tag(@article.title, :allow_sites => %w(twitter))
-= social_share_button_tag(@article.title, :allow_sites => %w(facebook), :url => article_url(@article), desc: @article.title)
+.row
+  = social_share_button_tag(@article.title, :allow_sites => %w(twitter))
+  = social_share_button_tag(@article.title, :allow_sites => %w(facebook), :url => article_url(@article), desc: @article.title)
