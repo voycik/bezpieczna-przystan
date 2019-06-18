@@ -1,3 +1,6 @@
+-if user_signed_in?
+  = link_to 'Edytuj', edit_animal_path(@animal), class: 'btn btn-warning btn-md'
+  = link_to 'Usuń', animal_path(@animal), method: :delete, class: 'btn btn-danger btn-md', data: { confirm: 'Czy na pewno chcesz usunąć  tego zwierzaka?' }
 .row
   .col-12
     %h1 #{@animal.name}
