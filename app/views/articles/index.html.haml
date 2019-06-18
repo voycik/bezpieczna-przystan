@@ -11,7 +11,14 @@
             = link_to article.title, article_path(article)
         .article-body
           = truncate(article.body, length: 1000)
-      .row
-        = social_share_button_tag(article.title, :allow_sites => %w(twitter))
-        = social_share_button_tag(article.title, :allow_sites => %w(facebook), :url => article_url(article), desc: article.title)
+      .col-2
+        .row
+          = social_share_button_tag(article.title, :allow_sites => %w(twitter))
+          = social_share_button_tag(article.title, :allow_sites => %w(facebook), :url => article_url(article), desc: article.title)
+        - if user_signed_in?
+          .row
+            = link_to 'Edytuj artykuł', edit_article_path(article), class: 'btn btn-warning btn-sm'
+            = link_to 'Usuń artykuł', article_path(article), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Czy na pewno chcesz usunąć ten artykuł?' }
+
+
 = will_paginate
