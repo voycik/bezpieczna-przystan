@@ -1,16 +1,16 @@
 .col-4
   = simple_form_for(@animal, as: :animal, url: @url) do |form|
-    = form.input :type
-    = form.input :name
-    = form.input :image_data, as: :file, :input_html => { :multiple => true }, accept: 'image/png,image/gif,image/jpeg, image/jpg', name: 'animal[images][][:image_data]'
-    = form.input :breed
-    = form.input :gender
-    = form.input :size
-    = form.input :purpose
-    = form.input :age
-    = form.input :for_kids
-    = form.input :come_date
-    = form.input :sterilization_date
-    = form.input :vaccination_date
-    = form.input :general_info
-    = form.button :submit
+    = form.input :type, label: "Gatunek:", collection: [["Pies", "Dog"], ["Kot", "Cat"]]
+    = form.input :name, label: "Imię:"
+    = form.input :image_data, label: "Zdjęcia", as: :file, :input_html => { :multiple => true }, accept: 'image/png,image/gif,image/jpeg, image/jpg', name: 'animal[images][][:image_data]'
+    = form.input :breed, label: "Rasa:"
+    = form.input :gender, label: "Płeć", collection: ["Pies", "Suka", "Kot", "Kotka"]
+    = form.input :size, label: "Wielkość:"
+    = form.input :purpose, label: "Przeznaczenie:"
+    = form.input :age, label: "Wiek:"
+    = form.input :for_kids, label: "Przyjazny dzieciom?"
+    = form.input :come_date, label: "W bezpiecznej przystani od:"
+    = form.input :sterilization_date, include_blank: true, label: "Data sterylizacji:"
+    = form.input :vaccination_date, include_blank: true, label: "Data szczepienia:"
+    = form.input :general_info, label: "Opis:"
+    = form.button :submit, class: 'btn btn-success btn-md'

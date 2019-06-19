@@ -76,8 +76,8 @@ RSpec.feature 'Creating Articles' do
     visit new_animal_path
 
     fill_in 'animal[name]', with: 'SampleCat'
-    fill_in 'animal[type]', with: 'Cat'
-    fill_in 'animal[gender]', with: 'Female'
+    select 'Kot', from: 'animal[type]'
+    select 'Kotka', from: 'animal[gender]'
     fill_in 'animal[size]', with: 'Small'
     fill_in 'animal[age]', with: 3
     fill_in 'animal[purpose]', with: 'House'
@@ -104,7 +104,7 @@ RSpec.feature 'Creating Articles' do
 
     visit animal_path(Animal.last)
     expect(page).to have_content('SampleCat')
-    expect(page).to have_content('Female')
+    expect(page).to have_content('Kotka')
     expect(page).to have_content('Small')
     expect(page).to have_content('3')
     expect(page).to have_content('House')
