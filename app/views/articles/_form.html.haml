@@ -1,6 +1,6 @@
 .col-4
 = simple_form_for(@article) do |form|
-  = form.input :title
-  = form.input :body
-  = form.input :image_data, as: :file, :input_html => { :multiple => true }, accept: 'image/png,image/gif,image/jpeg, image/jpg', name: 'article[images][][:image_data]'
-  = form.button :submit
+  = form.input :title, label: "Tytuł:"
+  = form.input :body, label: "Treść:"
+  = form.input :image_data, label: "Zdjęcia", as: :file, :input_html => { :multiple => true }, accept: 'image/png,image/gif,image/jpeg, image/jpg', name: 'article[images][][:image_data]'
+  = form.button :submit, class: 'btn btn- btn-md'

@@ -4,7 +4,8 @@
     %p
     .row
       .col-12
-        %h3 #{@article.title}
+        =link_to article_path(@article) do
+          %h3 #{@article.title}
       .col-3
         %img.img-thumbnail{alt: @article.title, src: @article.main_image, id:"article_image_main"}/
       .col-8
