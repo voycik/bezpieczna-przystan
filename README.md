@@ -9,7 +9,7 @@ Pets and articles can be shared on social networks directly from app.
 
 ## Preview
 
-http://www.bezpieczna.przystan.pl
+http://www.bezpieczna-przystan.pl
 
 ## Technology stack
 
