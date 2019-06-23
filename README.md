@@ -7,6 +7,10 @@
 This app is made as a homepage for temporary home for pets. It provides content menagement, like articles and each pet card. People who are interested in adoption can contact via built in forms.
 Pets and articles can be shared on social networks directly from app.
 
+## Preview
+
+http://www.bezpieczna.przystan.pl
+
 ## Technology stack
 
 |                     Name                     | Version |
