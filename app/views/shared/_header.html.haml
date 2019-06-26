@@ -1,21 +1,38 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-success
-  %a.navbar-brand{:href => root_path}
-    %img.d-inline-block.align-top{:alt => "", :height => "30", :src => "logo.png", :width => "30"}/
-    Bezpieczna Przystań
-  %ul.nav.navbar-nav
-    %li.nav-item
-      = link_to "Blog", articles_path, class: 'nav-link'
-    %li.nav-item
-      = link_to "Nasi podopieczni", animals_path, class: 'nav-link'
-    %li.nav-item
-      = link_to "Kontakt", new_message_path, class: 'nav-link'
-    -if user_signed_in?
-      %li.nav-item
-        =link_to "Dodaj artykuł", new_article_path, class: 'btn btn-info btn-sm'
-      %li.nav-item
-        =link_to "Dodaj zwierzę", new_animal_path, class: 'btn btn-info btn-sm'
-      %li.nav-item
-        =link_to "Wyloguj", destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-sm'
-
-%p.notice= notice
-%p.alert= alert
+%div.background
+  %div.overlay
+    %div.container
+      %div.top-section
+        %div.logo
+          %div.logo-image
+            %img{src:"logo.png"}
+          %h2
+            Bezpieczna
+            %br
+            Przystań
+        %nav.navbar.navbar-expand-lg
+          %ul.nav.navbar-nav
+            %li.nav-item
+              = link_to "Blog", articles_path, class: 'nav-link'
+            %li.nav-item
+              = link_to "Nasi podopieczni", animals_path, class: 'nav-link'
+            %li.nav-item
+              = link_to "Kontakt", new_message_path, class: 'nav-link'
+            %li.nav-item.adoption-button
+              = link_to "Adopcja", new_message_path, class: 'nav-link'
+            -if user_signed_in?
+              %li.nav-item
+                =link_to "Dodaj artykuł", new_article_path, class: 'btn btn-info btn-sm'
+              %li.nav-item
+                =link_to "Dodaj zwierzę", new_animal_path, class: 'btn btn-info btn-sm'
+              %li.nav-item
+                =link_to "Wyloguj", destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-sm'
+      %br
+      %div.button-section
+        %div.title
+          %h2.main-title
+            bezpieczna przystań
+            %br
+          %h2
+            dla wszystkich czworonogów
+    %p.notice= notice
+    %p.alert= alert

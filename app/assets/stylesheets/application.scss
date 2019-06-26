@@ -21,3 +21,125 @@
 .jumbotron {
   margin: 10px;
 }
+
+.navbar {
+  margin-left: auto;
+  justify-content: flex-end;
+  font-family: "Spinnaker", Sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  line-height: 20px;
+  letter-spacing: 1.2px;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.background {
+  background-image: url("dogs_main.jpeg");
+  background-position: center center;
+  background-size: cover;
+}
+
+.overlay {
+  background-image: radial-gradient(at center center, rgba(0,0,0,0) 0%, #00000085 100%);
+  background-color: transparent;
+}
+.opacity :not(.logo){
+
+}
+
+.container {
+  min-height: 800px;
+  max-width: 1140px;
+  display: inherit;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0px 0px 0px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-item {
+  margin-right: 43px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.logo {
+  width: 13.421%;
+}
+
+.logo-image{
+  height: auto;
+  max-width: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+  margin: 0px 0px -20px 0px;
+}
+
+.logo h2 {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: "Roboto", Sans-serif;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  display: block;
+  margin: 5px 0px -34px 0px;
+  padding-bottom: 20px;
+}
+
+.logo > * {
+  padding: 21px 0px 0px 0px;
+  background-color: #ffffff;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.title{
+  padding: 10px;
+  width: 100%;
+  color: #ffffff;
+  font-family: "Spinnaker", Sans-serif;
+  font-size: 35px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 3px;
+  letter-spacing: 1.2px;
+}
+
+.main-title {
+  font-size: 64px;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: #ffffff;
+  margin-top: 160px;
+}
+
+.top-section {
+  display: flex;
+}
+
+.adoption-button {
+  padding: 15px 15px !important;
+  background: #159B3A;
+  margin: 0 !important;
+  color: #fff !important;
+  border-radius: 4px;
+}
+
+a:hover {
+  color: white;
+}
