@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AdoptionsController < ApplicationController
-  before_action :find_animal, only: %i[new, create]
+  before_action :find_animal, only: %i[new create]
   def new
     @adoption = DogAdoption.new
   end
@@ -43,7 +43,7 @@ end
 
 def preferences_params
   params.require(:preferences_form).permit(:name, :gender, :dog_size, :email, :phone_number, :where_keep, :free_time, :children_age,
-                                       :other_animals, :had_dog, :hours_alone, :dog_name, :comments)
+                                           :other_animals, :had_dog, :hours_alone, :dog_name, :comments)
 end
 
 def find_animal
