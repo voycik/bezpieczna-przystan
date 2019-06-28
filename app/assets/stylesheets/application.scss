@@ -45,7 +45,7 @@
 }
 
 .background {
-  background-image: url("dogs_main.jpeg");
+  background-image: asset-url("dogs_main.jpeg");
   background-position: center center;
   background-size: cover;
 }
@@ -222,7 +222,7 @@ a:hover {
 }
 
 .help {
-  background-image: url("bridge_cropped.jpeg");
+  background-image: asset-url("bridge_cropped.jpeg");
   background-position: center center;
   background-size: cover;
   font-family: "Spinnaker", Sans-serif;
