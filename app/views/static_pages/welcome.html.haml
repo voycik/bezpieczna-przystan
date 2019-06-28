@@ -1,3 +1,30 @@
+%section.pets
+  %div.pets
+    %h1
+      Poznaj naszych podopiecznych
+    .card-deck
+      - @animals.each do |animal|
+        .col-4
+          .card
+            = link_to animal_path(animal) do
+              %img.card-img-top{alt: "#{animal.name}", src: animal.main_image, id: "animal_image_main"}/
+              .card-body
+                %h5.card-title.name="#{animal.name}"
+                %br
+                %h5.card-title.age="#{animal.age} lat(a)"
+  %p
+  %a.btn.btn-success.more{:href => animals_path, :role => "button"} Pozostałe czworonogi
+
+%section.help
+  %div.overlay
+    %div.row
+      %div.container.col-5.cropped
+        %div.help-headers
+          %h1 ty również możesz zostać bohaterem
+          %h2 10 1010 2300 0026 1395 1000 0025 2183
+          %h3 Przekazując dowolną darowiznę na rzecz Domu “Bezpieczna Przystań”, pomagasz dbać o zdrowie i dobry stan naszych milusińskich.
+      %div.col-5
+
 .jumbotron
   %h1
     Nowości na blogu
@@ -13,17 +40,3 @@
 
   %p
   %a.btn.btn-success.btn-md{:href => articles_path, :role => "button"} Pozostałe artykuły
-
-.jumbotron
-  %h1
-    Poznaj naszych nowych podopiecznych
-  .card-deck
-    - @animals.each do |animal|
-      .col-4
-        .card
-          = link_to animal_path(animal) do
-            %img.card-img-top{alt: "#{animal.name}", src: animal.main_image, id: "animal_image_main"}/
-            .card-body
-              %h5.card-title="#{animal.name}"
-  %p
-  %a.btn.btn-success.btn-md{:href => animals_path, :role => "button"} Pozostałe czworonogi

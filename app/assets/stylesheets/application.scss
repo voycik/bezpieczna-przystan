@@ -14,10 +14,249 @@
 @import "bootstrap";
 @import "social-share-button";
 
+@font-face{
+  font-family: "Spinnaker";
+  src: font-url('Spinnaker.ttf') format('truetype'),;
+}
+
+
 .btn {
   margin: 5px;
 }
 
 .jumbotron {
   margin: 10px;
+}
+
+.navbar {
+  margin-left: auto;
+  justify-content: flex-end;
+  font-family: "Spinnaker", Sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  line-height: 20px;
+  letter-spacing: 1.2px;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.background {
+  background-image: asset-url("dogs_main.jpeg");
+  background-position: center center;
+  background-size: cover;
+}
+
+.overlay {
+  background-image: radial-gradient(at center center, rgba(0,0,0,0) 0%, #00000085 100%);
+  background-color: transparent;
+}
+
+.container {
+  min-height: 800px;
+  display: inherit;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0px 0px 0px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-item {
+  margin-right: 43px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.logo {
+  width: 13.421%;
+}
+
+.logo-image{
+  height: auto;
+  max-width: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+  margin: 0px 0px -20px 0px;
+}
+
+.logo h2 {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: "Roboto", Sans-serif;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  display: block;
+  margin: 5px 0px -34px 0px;
+  padding-bottom: 20px;
+}
+
+.logo > * {
+  padding: 21px 0px 0px 0px;
+  background-color: #ffffff;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.title{
+  padding: 10px;
+  width: 100%;
+  color: #ffffff;
+  font-family: "Spinnaker", Sans-serif;
+  font-size: 35px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 3px;
+  letter-spacing: 1.2px;
+}
+
+.main-title {
+  font-size: 64px;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: #ffffff;
+  margin-top: 160px;
+}
+
+.top-section {
+  display: flex;
+}
+
+.adoption-button {
+  padding: 15px 15px !important;
+  background: #159B3A;
+  margin: 0 !important;
+  color: #fff !important;
+  border-radius: 4px;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.pets {
+  margin: auto;
+  width: 85%;
+  background-color: #ffffff;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.pets h1{
+  color: black;
+  font-family: "Spinnaker", Sans-serif;
+  font-weight: 600;
+  font-size: 35px;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  text-align:center;
+  margin-bottom: 40px;
+}
+.card {
+  text-align: center;
+  border-radius: 5px 5px 5px 5px;
+  background-color: transparent;
+  background-image: linear-gradient(0deg, rgba(21,155,58,0) 0%, rgba(242,41,91,0) 100%);
+}
+
+.card:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+  transform: scale(1.05)
+}
+
+.card a img {
+  height: 330px;
+}
+
+.card-body, .more {
+  background-color: transparent;
+  border-radius: 0px 0px 5px 5px;
+  background-image: linear-gradient(25deg, #159b3a 0%, #4caf50ad 68%);
+  opacity: 1;
+  color: white;
+  font-family: "Spinnaker", sans-serif;
+  font-size: 20px;
+}
+
+.name {
+  font-size: 30px;
+  margin-bottom: 0;
+  display: -webkit-inline-box;
+  padding-bottom: 5px;
+}
+
+.age {
+  border-style: solid;
+  border-width: 1px 0px 0px 0px;
+  border-color: #ffffff;
+  font-size: 23px;
+  padding-top: 5px;
+}
+
+.card-deck .card {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.more {
+  border-radius: 5px 5px 5px 5px;
+  display: block;
+  width: 25%;
+  margin: auto;
+}
+
+.help {
+  background-image: asset-url("bridge_cropped.jpeg");
+  background-position: center center;
+  background-size: cover;
+  font-family: "Spinnaker", Sans-serif;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.help h1 {
+  font-weight: 600;
+  font-size: 48px;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.help h2{
+  font-size: 26px;
+  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+  border-color: #ffffff;
+  padding: 10px;
+}
+
+.help h3{
+  font-size: 17px;
+  width: 90%;
+  padding: 10px;
+}
+
+.help-headers{
+  margin: auto;
+}
+
+.cropped {
+  min-height: 600px;
 }
